@@ -1,0 +1,71 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'java-gradle-plugin'
+    id 'de.fuerstenau.buildconfig'
+    id 'com.gradle.plugin-publish'
+}
+apply from: "$rootDir/dependencies.gradle"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+
+buildConfig {
+    buildConfigField 'String', 'FLIPPER_UTIL_VERSION', "$flipperUtilVersion"
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation deps['asm']
+    implementation deps['asm-util']
+    implementation deps['asm-commons']
+
+    implementation "com.android.tools.build:gradle:4.1.3"
+    implementation "com.android.tools.build:gradle-api:4.1.3"
+}
+
+
+version = pluginVersion
+group = 'com.piex.plugin'
+
+pluginBundle {  // Removed in Gradle 8+
+    website = 'https://github.com/tadevi/gradle-flipper-plugin'
+    vcsUrl = 'https://github.com/tadevi/gradle-flipper-plugin'
+
+    // Individual descriptions for plugins can be set via the java-gradle-plugin, see below.
+    description = 'Gradle Flipper Native Plugin'
+
+    tags = ['flipper', 'gradle', 'plugins']
+
+    // Individual tags for published plugins; overrides bundle tags for the mentioned plugins.
+    // The keys used to specify the plugins must match the names of the blocks in 'gradlePlugin.plugins' (see below).
+    pluginTags = [
+            flipperNative: ['native', 'plugin', 'flipper'],
+            flipperReact: ['react', 'plugin', 'flipper']
+    ]
+}
+
+gradlePlugin {
+    plugins {
+        flipperNative {
+            id = "com.piex.plugin.flipper.native"
+            implementationClass = "com.piex.flipperplugin.FlipperNativePlugin"
+            displayName = 'Gradle Minimal Flipper Native Plugin'
+        }
+        flipperReact {
+            id = "com.piex.plugin.flipper.react"
+            implementationClass = "com.piex.flipperplugin.FlipperReactPlugin"
+            displayName = 'Gradle Minimal Flipper React Plugin'
+        }
+    }
+}
+

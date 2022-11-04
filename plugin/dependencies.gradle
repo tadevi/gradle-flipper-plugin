@@ -1,0 +1,19 @@
+ext.vers = [
+        'facebook-flipper'          : '0.173.0',
+        'flipper-network-plugin'    : '0.173.0',
+        'flipper-mmkv-plugin'       : '1.0.0',
+        'okhttp'                    : '3.4.1',
+        'asm'                       : '7.2',
+        'soloader'                  : '0.10.4'
+]
+
+ext.deps = [
+        'facebook-flipper'          : "com.facebook.flipper:flipper:${ext.vers['facebook-flipper']}",
+        'flipper-network-plugin'    : "com.facebook.flipper:flipper-network-plugin:${ext.vers['flipper-network-plugin']}",
+        'flipper-mmkv-plugin'       : "com.github.ddyos:flipper-plugin-mmkv-viewer:${ext.vers['flipper-mmkv-plugin']}",
+        'okhttp'                    : "com.squareup.okhttp3:okhttp:${ext.vers['okhttp']}",
+        'asm'                       : "org.ow2.asm:asm:${ext.vers['asm']}",
+        'asm-util'                  : "org.ow2.asm:asm-util:${ext.vers['asm']}",
+        'asm-commons'               : "org.ow2.asm:asm-commons:${ext.vers['asm']}",
+        'soloader'                  : "com.facebook.soloader:soloader:${ext.vers['soloader']}"
+]

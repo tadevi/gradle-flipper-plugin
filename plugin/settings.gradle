@@ -1,0 +1,3 @@
+rootProject.name = "flipper-gradle-plugin"
+include ':flipper'
+include ':flipperplugin'

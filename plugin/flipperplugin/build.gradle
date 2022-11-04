@@ -44,13 +44,13 @@ pluginBundle {  // Removed in Gradle 8+
     // Individual descriptions for plugins can be set via the java-gradle-plugin, see below.
     description = 'Gradle Flipper Native Plugin'
 
-    tags = ['flipper', 'gradle', 'plugins']
+    tags = ['flipper', 'react', 'native', 'android']
 
     // Individual tags for published plugins; overrides bundle tags for the mentioned plugins.
     // The keys used to specify the plugins must match the names of the blocks in 'gradlePlugin.plugins' (see below).
     pluginTags = [
-            flipperNative: ['native', 'plugin', 'flipper'],
-            flipperReact: ['react', 'plugin', 'flipper']
+            flipperNative: ['native', 'flipper'],
+            flipperReact: ['react',  'flipper']
     ]
 }
 

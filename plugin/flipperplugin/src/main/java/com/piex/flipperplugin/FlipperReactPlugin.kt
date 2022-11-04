@@ -29,6 +29,6 @@ class FlipperReactPlugin : Plugin<Project> {
     private fun injectDependencies(compileDeps: DependencySet, project: Project) {
         val projectDeps = project.dependencies
         // inject flipper util
-        compileDeps.add(projectDeps.create("com.piex.library:flipper-util-react:${BuildConfig.FLIPPER_UTIL_VERSION}"))
+        compileDeps.add(projectDeps.create("io.github.tadevi:flipper-util-native:${BuildConfig.FLIPPER_UTIL_VERSION}"))
     }
 }

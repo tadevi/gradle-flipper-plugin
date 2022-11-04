@@ -43,68 +43,65 @@ android {
 dependencies {
     implementation "androidx.annotation:annotation:1.3.0"
 
-    nativeImplementation (deps['facebook-flipper'])
-    reactImplementation (deps['facebook-flipper']) {
-        exclude group:'com.facebook.fbjni'
+    nativeImplementation(deps['facebook-flipper'])
+    reactImplementation(deps['facebook-flipper']) {
+        exclude group: 'com.facebook.fbjni'
     }
-    nativeImplementation (deps['flipper-network-plugin'])
-    reactImplementation (deps['flipper-network-plugin']) {
-        exclude group:'com.facebook.flipper'
+
+    nativeImplementation(deps['flipper-network-plugin'])
+    reactImplementation(deps['flipper-network-plugin']) {
+        exclude group: 'com.facebook.flipper'
     }
 
     implementation deps['flipper-mmkv-plugin']
+
     compileOnly deps['okhttp']
 
     nativeImplementation deps['soloader']
     reactCompileOnly deps['soloader']
 }
 
-task androidJavadocs(type: Javadoc){
-    source = android.sourceSets.main.java.srcDirs
-
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    android.libraryVariants.all{ variant->
-        if (variant.name == 'release'){
-            owner.classpath += variant.javaCompileProvider.get().classpath
-        }
-    }
-
-    title = null
-}
-
-task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs){
-    archiveClassifier.set('javadoc')
-    from androidJavadocs.destinationDir
-}
-
-
-task androidSourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
-    from android.sourceSets.main.java.srcDirs
-}
-
 afterEvaluate {
     publishing {
         publications {
-            reactRelease(MavenPublication){
-                groupId = 'com.piex.library'
+            reactRelease(MavenPublication) {
+                groupId = 'io.github.tadevi'
                 artifactId = 'flipper-util-react'
                 version = flipperUtilVersion
 
                 from components.reactRelease
-                artifact androidSourcesJar
-                artifact androidJavadocsJar
             }
 
-            nativeRelease(MavenPublication){
-                groupId = 'com.piex.library'
+            nativeRelease(MavenPublication) {
+                groupId = 'io.github.tadevi'
                 artifactId = 'flipper-util-native'
                 version = flipperUtilVersion
 
                 from components.nativeRelease
-                artifact androidSourcesJar
-                artifact androidJavadocsJar
             }
+        }
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        repositories {
+            maven {
+                name = "Snapshot"
+                url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+                credentials {
+                    username properties.getProperty('username')
+                    password properties.getProperty('password')
+                }
+            }
+
+//            maven {
+//                name = "Releases"
+//                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+//                credentials {
+//                    username properties.getProperty('username')
+//                    password properties.getProperty('password')
+//                }
+//            }
         }
     }
 }

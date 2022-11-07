@@ -1,9 +1,9 @@
-package com.piex.flipperplugin.functions.okhttp3
+package io.github.tadevi.flipperplugin.functions.okhttp3
 
-import com.piex.flipperplugin.constant.ASM_API
-import com.piex.flipperplugin.constant.FLIPPER_UTIL_CLASS_DESCRIPTOR
-import com.piex.flipperplugin.constant.FLIPPER_UTIL_INJECT_METHOD_DESCRIPTOR
-import com.piex.flipperplugin.helper.invokeStatic
+import io.github.tadevi.flipperplugin.constant.ASM_API
+import io.github.tadevi.flipperplugin.constant.FLIPPER_UTIL_CLASS_DESCRIPTOR
+import io.github.tadevi.flipperplugin.constant.FLIPPER_UTIL_INJECT_METHOD_DESCRIPTOR
+import io.github.tadevi.flipperplugin.helper.invokeStatic
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.commons.AdviceAdapter
 

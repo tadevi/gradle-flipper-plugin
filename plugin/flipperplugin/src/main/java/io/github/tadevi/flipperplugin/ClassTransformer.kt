@@ -1,8 +1,8 @@
-package com.piex.flipperplugin
+package io.github.tadevi.flipperplugin
 
-import com.piex.flipperplugin.helper.copyToFolder
-import com.piex.flipperplugin.helper.forEach
-import com.piex.flipperplugin.helper.isClassFile
+import io.github.tadevi.flipperplugin.helper.copyToFolder
+import io.github.tadevi.flipperplugin.helper.forEach
+import io.github.tadevi.flipperplugin.helper.isClassFile
 import org.objectweb.asm.ClassReader
 import java.io.File
 import java.io.FileInputStream

@@ -1,7 +1,7 @@
-package com.piex.flipperplugin.functions.okhttp3
+package io.github.tadevi.flipperplugin.functions.okhttp3
 
-import com.piex.flipperplugin.ByteCodeTransformer
-import com.piex.flipperplugin.constant.OKHTTP_CLIENT_CLASS_NAME
+import io.github.tadevi.flipperplugin.ByteCodeTransformer
+import io.github.tadevi.flipperplugin.constant.OKHTTP_CLIENT_CLASS_NAME
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassWriter
 

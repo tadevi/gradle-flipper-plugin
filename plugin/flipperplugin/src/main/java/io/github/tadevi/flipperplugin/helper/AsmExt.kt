@@ -1,4 +1,4 @@
-package com.piex.flipperplugin.helper
+package io.github.tadevi.flipperplugin.helper
 
 import org.objectweb.asm.Type
 import org.objectweb.asm.commons.GeneratorAdapter

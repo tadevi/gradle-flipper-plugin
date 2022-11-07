@@ -1,10 +1,10 @@
 ext.vers = [
-        'facebook-flipper'          : '0.173.0',
-        'flipper-network-plugin'    : '0.173.0',
+        'facebook-flipper'          : '0.125.0',
+        'flipper-network-plugin'    : '0.125.0',
         'flipper-mmkv-plugin'       : '1.0.0',
         'okhttp'                    : '3.4.1',
         'asm'                       : '7.2',
-        'soloader'                  : '0.10.4'
+        'soloader'                  : '0.10.3'
 ]
 
 ext.deps = [

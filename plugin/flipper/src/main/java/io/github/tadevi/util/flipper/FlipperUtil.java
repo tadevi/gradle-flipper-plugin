@@ -1,4 +1,4 @@
-package com.piex.util.flipper;
+package io.github.tadevi.util.flipper;
 
 import android.content.Context;
 

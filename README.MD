@@ -8,21 +8,30 @@ A little bit more control though.
 buildscript {
   repositories {
     maven {
-      url 'https://plugins.gradle.org/m2/'
+      url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
     }
   }
   dependencies {
-    classpath 'com.piex.plugin:flipperplugin:1.0.0'
+    classpath 'io.github.tadevi.plugin:flipperplugin:1.0.0-SNAPSHOT'
+  }
+}
+
+allprojects {
+  repositories {
+    maven {
+      url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+    }
   }
 }
 
 
-apply plugin: ''com.piex.plugin.flipper'' // build.gradle (app module)
+apply plugin: 'io.tadevi.plugin.flipper.native' // build.gradle (app module)
 ```
 ### Compatibility
 - Network Flipper Plugin only works for OkHttp (latest support version: 4.x.x)
-- Should apply the gradle plugin for debug build
-- Internal libraries:
-+ com.facebook.flipper:flipper:0.54.0
-+ com.facebook.flipper:flipper-network-plugin:0.54.0
+- Recommend: Should apply the gradle plugin for debug build
+- Internal dependencies:
++ com.facebook.flipper:flipper:0.125.0
++ com.facebook.flipper:flipper-network-plugin:0.125.0
 + com.github.ddyos:flipper-plugin-mmkv-viewer:1.0.0
++ com.facebook.soloader:soloader:0.10.3

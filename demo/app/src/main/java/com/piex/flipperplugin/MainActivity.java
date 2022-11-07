@@ -1,6 +1,8 @@
 package com.piex.flipperplugin;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         startNetworkCall();
+        Uri uri = Uri.parse("https://foo.com/?url=https%3A%2F%2Fgoogle.com");
+        Log.e("###", uri.getQueryParameter("url"));
     }
 
     private void startNetworkCall() {

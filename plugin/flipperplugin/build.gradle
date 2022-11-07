@@ -3,7 +3,7 @@ plugins {
     id 'kotlin'
     id 'java-gradle-plugin'
     id 'de.fuerstenau.buildconfig'
-    id 'com.gradle.plugin-publish'
+    id 'maven-publish'
 }
 apply from: "$rootDir/dependencies.gradle"
 
@@ -35,37 +35,54 @@ dependencies {
 
 
 version = pluginVersion
-group = 'com.piex.plugin'
+group = 'io.github.tadevi'
 
-pluginBundle {  // Removed in Gradle 8+
-    website = 'https://github.com/tadevi/gradle-flipper-plugin'
-    vcsUrl = 'https://github.com/tadevi/gradle-flipper-plugin'
-
-    // Individual descriptions for plugins can be set via the java-gradle-plugin, see below.
-    description = 'Gradle Flipper Native Plugin'
-
-    tags = ['flipper', 'react', 'native', 'android']
-
-    // Individual tags for published plugins; overrides bundle tags for the mentioned plugins.
-    // The keys used to specify the plugins must match the names of the blocks in 'gradlePlugin.plugins' (see below).
-    pluginTags = [
-            flipperNative: ['native', 'flipper'],
-            flipperReact: ['react',  'flipper']
-    ]
-}
+//pluginBundle {  // Removed in Gradle 8+
+//    website = 'https://github.com/tadevi/gradle-flipper-plugin'
+//    vcsUrl = 'https://github.com/tadevi/gradle-flipper-plugin'
+//
+//    // Individual descriptions for plugins can be set via the java-gradle-plugin, see below.
+//    description = 'Gradle Flipper Native Plugin'
+//
+//    tags = ['flipper', 'react', 'native', 'android']
+//
+//    // Individual tags for published plugins; overrides bundle tags for the mentioned plugins.
+//    // The keys used to specify the plugins must match the names of the blocks in 'gradlePlugin.plugins' (see below).
+//    pluginTags = [
+//            flipperNative: ['native', 'flipper'],
+//            flipperReact: ['react',  'flipper']
+//    ]
+//}
 
 gradlePlugin {
     plugins {
         flipperNative {
-            id = "com.piex.plugin.flipper.native"
-            implementationClass = "com.piex.flipperplugin.FlipperNativePlugin"
+            id = "io.tadevi.plugin.flipper.native"
+            implementationClass = "io.github.tadevi.flipperplugin.FlipperNativePlugin"
             displayName = 'Gradle Minimal Flipper Native Plugin'
         }
         flipperReact {
-            id = "com.piex.plugin.flipper.react"
-            implementationClass = "com.piex.flipperplugin.FlipperReactPlugin"
+            id = "io.tadevi.plugin.flipper.react"
+            implementationClass = "io.github.tadevi.flipperplugin.FlipperReactPlugin"
             displayName = 'Gradle Minimal Flipper React Plugin'
         }
     }
 }
 
+publishing {
+    repositories {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        mavenLocal()
+
+        maven {
+            name = "Snapshot"
+            url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            credentials {
+                username properties.getProperty('username')
+                password properties.getProperty('password')
+            }
+        }
+    }
+}

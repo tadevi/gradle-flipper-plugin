@@ -1,4 +1,4 @@
-package com.piex.flipperplugin
+package io.github.tadevi.flipperplugin
 
 import com.android.build.gradle.BaseExtension
 import com.piex.plugin.BuildConfig
@@ -8,13 +8,13 @@ import org.gradle.api.artifacts.DependencyResolutionListener
 import org.gradle.api.artifacts.DependencySet
 import org.gradle.api.artifacts.ResolvableDependencies
 
-class FlipperReactPlugin : Plugin<Project> {
+class FlipperNativePlugin : Plugin<Project> {
     override fun apply(project: Project) {
         val android = project.findProperty("android")
         if (android is BaseExtension) {
             project.gradle.addListener(object : DependencyResolutionListener {
                 override fun beforeResolve(p0: ResolvableDependencies) {
-                    val compileDeps = project.configurations.getByName("compile").dependencies
+                    val compileDeps = project.configurations.getByName("implementation").dependencies
                     injectDependencies(compileDeps, project)
                     project.gradle.removeListener(this)
                 }

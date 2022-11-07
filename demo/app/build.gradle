@@ -2,7 +2,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.piex.plugin.flipper.react'
+    id 'io.tadevi.plugin.flipper.native'
 }
 
 android {

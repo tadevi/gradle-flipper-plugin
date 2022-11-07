@@ -1,4 +1,4 @@
-package com.piex.flipperplugin.helper
+package io.github.tadevi.flipperplugin.helper
 
 import com.android.SdkConstants
 import java.io.File

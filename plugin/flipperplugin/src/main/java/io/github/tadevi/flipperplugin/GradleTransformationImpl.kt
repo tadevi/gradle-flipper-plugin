@@ -1,11 +1,10 @@
-package com.piex.flipperplugin
+package io.github.tadevi.flipperplugin
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.BaseExtension
-import com.android.tools.build.jetifier.core.utils.Log
-import com.piex.flipperplugin.helper.isClassFile
-import com.piex.flipperplugin.helper.toOutputFile
-import com.piex.flipperplugin.functions.okhttp3.OkHttpClientTransformer
+import io.github.tadevi.flipperplugin.helper.isClassFile
+import io.github.tadevi.flipperplugin.helper.toOutputFile
+import io.github.tadevi.flipperplugin.functions.okhttp3.OkHttpClientTransformer
 import org.gradle.api.Project
 import java.io.File
 
